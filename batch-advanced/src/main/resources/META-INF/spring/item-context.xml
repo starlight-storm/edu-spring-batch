@@ -7,65 +7,20 @@
 
 	<bean id="productItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
 		scope="step">
-		<property name="lineMapper">
-			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
-				<property name="lineTokenizer">
-					<bean
-						class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
-						<property name="delimiter" value="," />
-						<property name="names" value="name,price" />
-					</bean>
-				</property>
-				<property name="fieldSetMapper">
-					<bean
-						class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
-						<property name="targetType" value="sample.business.domain.Product" />
-					</bean>
-				</property>
-			</bean>
-		</property>
-		<property name="resource" value="#{jobParameters[inputFile]}" />
-		<!-- 1行目（見出し）を飛ばす -->
-		<property name="linesToSkip" value="1" />
+		<!-- TODO: 演習4 プロパティを記述しなさい -->
 	</bean>
 
 	<bean id="productItemWriter"
 		class="org.springframework.batch.item.database.JdbcBatchItemWriter">
-		<property name="dataSource" ref="batchDataSource" />
-		<property name="sql"
-			value="insert into product (name, price) values(:name, :price)" />
-		<property name="itemSqlParameterSourceProvider">
-			<bean
-				class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
-		</property>
+		<!-- TODO: 演習4 プロパティを記述しなさい -->
 	</bean>
 
 	<bean id="memberItemReader"
 		class="org.springframework.batch.item.database.JdbcCursorItemReader">
-		<property name="dataSource" ref="batchDataSource" />
-		<property name="rowMapper">
-			<bean
-				class="org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper">
-				<property name="mappedClass" value="sample.business.domain.Member" />
-			</bean>
-		</property>
-		<property name="sql" value="select * from member" />
+		<!-- TODO: 演習4-5 プロパティを記述しなさい -->
 	</bean>
 
 	<bean id="memberItemWriter" class="org.springframework.batch.item.file.FlatFileItemWriter">
-		<property name="resource" value="file:/Users/hase/Document/member.csv" />
-		<!--  <property name="resource" value="file:/Users/hoge/Documents/member.csv" /> -->
-		<property name="shouldDeleteIfExists" value="true"/><!-- true:上書きを許す -->
-		<property name="lineAggregator">
-			<bean
-				class="org.springframework.batch.item.file.transform.DelimitedLineAggregator">
-				<property name="fieldExtractor">
-					<bean
-						class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
-						<property name="names" value="memberId,name" />
-					</bean>
-				</property>
-			</bean>
-		</property>
+		<!-- TODO: 演習4-5 プロパティを記述しなさい -->
 	</bean>
 </beans>

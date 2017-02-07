@@ -11,11 +11,15 @@
 				<batch:chunk reader="productItemReader" processor="productItemProcessor" writer="productItemWriter"
 					commit-interval="1" skip-limit="10">
 					<batch:skippable-exception-classes>
+						<!-- ValidationエラーでSKIPさせる -->
 						<batch:include class="org.springframework.batch.item.validator.ValidationException" />
 					</batch:skippable-exception-classes>
 				</batch:chunk>
 			</batch:tasklet>
-			<!-- TODO: 演習4 Listnerの設定を記述しなさい -->
+			<batch:listeners>
+				<batch:listener ref="sampleChunkListener" />
+				<batch:listener ref="sampleStepExecutionListener" />
+			</batch:listeners>
 		</batch:step>
 	</batch:job>
 

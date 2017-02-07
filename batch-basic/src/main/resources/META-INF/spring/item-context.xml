@@ -7,34 +7,12 @@
 
 	<bean id="productItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
 		scope="step">
-		<property name="resource" value="#{jobParameters[inputFile]}" />
-		<property name="linesToSkip" value="1" />
-		<property name="lineMapper">
-			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
-				<property name="lineTokenizer">
-					<bean
-						class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
-						<property name="delimiter" value="," />
-						<property name="names" value="name,price" />
-					</bean>
-				</property>
-				<property name="fieldSetMapper">
-					<bean
-						class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
-						<property name="targetType" value="sample.business.domain.Product" />
-					</bean>
-				</property>
-			</bean>
-		</property>
+		<!-- TODO: 演習3 プロパティを記述しなさい -->
 	</bean>
 	
 	<bean id="productItemProcessor"
 		class="org.springframework.batch.item.validator.ValidatingItemProcessor">
-		<property name="validator">
-			<bean class="org.springframework.batch.item.validator.SpringValidator">
-				<property name="validator" ref="validator" />
-			</bean>
-		</property>
+		<!-- TODO: 演習3 プロパティを記述しなさい -->
 	</bean>
 
 	<bean name="validator"
@@ -42,13 +20,7 @@
 
 	<bean id="productItemWriter"
 		class="org.springframework.batch.item.database.JdbcBatchItemWriter">
-		<property name="dataSource" ref="batchDataSource" />
-		<property name="sql"
-			value="insert into product (name, price) values(:name, :price)" />
-		<property name="itemSqlParameterSourceProvider">
-			<bean
-				class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
-		</property>
+		<!-- TODO: 演習3 プロパティを記述しなさい -->
 	</bean>
 
 </beans>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:batch="http://www.springframework.org/schema/batch"
 	xsi:schemaLocation="
 	http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
@@ -8,15 +9,13 @@
 	<batch:job id="job1">
 		<batch:step id="step1">
 			<batch:tasklet>
-				<batch:chunk reader="productItemReader" processor="productItemProcessor" writer="productItemWriter"
-					commit-interval="1" skip-limit="10">
+				<batch:chunk reader="itemReader" processor="itemProcessor"
+					writer="itemWriter" commit-interval="1" skip-limit="1">
 					<batch:skippable-exception-classes>
-						<batch:include class="org.springframework.batch.item.validator.ValidationException" />
+						<batch:include class="sample.batch.exception.BatchSkipException" />
 					</batch:skippable-exception-classes>
 				</batch:chunk>
 			</batch:tasklet>
-			<!-- TODO: 演習4 Listnerの設定を記述しなさい -->
 		</batch:step>
 	</batch:job>
-
 </beans>

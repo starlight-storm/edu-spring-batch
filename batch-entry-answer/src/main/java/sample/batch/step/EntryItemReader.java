@@ -3,6 +3,8 @@ package sample.batch.step;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.stereotype.Component;
 
+import sample.batch.exception.BatchSkipException;
+
 @Component("itemReader")
 public class EntryItemReader implements ItemReader<String> {
 
@@ -17,9 +19,10 @@ public class EntryItemReader implements ItemReader<String> {
 		if(message == null) {
 			return null;
 		}
-
-		// TODO: 演習2で例外処理を記述する
-		
+		if (message.equals("hoge")) {
+			throw new BatchSkipException("不正なデータです"
+					+ message + "]");
+		}
 		return message;
 	}
 }

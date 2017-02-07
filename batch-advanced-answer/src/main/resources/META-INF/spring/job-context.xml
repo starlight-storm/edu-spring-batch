@@ -6,17 +6,19 @@
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<batch:job id="job1">
-		<batch:step id="step1">
+		<batch:step id="step1" next="step2">
 			<batch:tasklet>
-				<batch:chunk reader="productItemReader" processor="productItemProcessor" writer="productItemWriter"
-					commit-interval="1" skip-limit="10">
-					<batch:skippable-exception-classes>
-						<batch:include class="org.springframework.batch.item.validator.ValidationException" />
-					</batch:skippable-exception-classes>
-				</batch:chunk>
+				<batch:chunk reader="productItemReader" writer="productItemWriter"
+					commit-interval="1" />
 			</batch:tasklet>
-			<!-- TODO: 演習4 Listnerの設定を記述しなさい -->
+		</batch:step>
+		<batch:step id="step2">
+			<batch:tasklet>
+				<batch:chunk reader="memberItemReader" writer="memberItemWriter"
+					commit-interval="1" />
+			</batch:tasklet>
 		</batch:step>
 	</batch:job>
 
+	<bean id="taskExecutor" class="org.springframework.core.task.SimpleAsyncTaskExecutor" />
 </beans>
