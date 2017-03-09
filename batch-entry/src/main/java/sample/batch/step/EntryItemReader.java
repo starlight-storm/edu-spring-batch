@@ -6,7 +6,8 @@ import org.springframework.stereotype.Component;
 @Component("itemReader")
 public class EntryItemReader implements ItemReader<String> {
 
-	private String[] input = {"Hello World", "hoge", "こんにちわ。世界", null};
+	// TODO: 演習2でinputにhogeを1回加えて確認し、終了後に2回加えて確認すること
+	private String[] input = {"Hello World", "こんにちわ。世界", null};
 
 	private int index = 0;
 
