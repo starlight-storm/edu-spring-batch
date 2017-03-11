@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-public class BootBatchBasicApplication {
+public class BootBatchMvcApplication {
 	
     @Autowired
     JobLauncher jobLauncher;
@@ -21,7 +21,7 @@ public class BootBatchBasicApplication {
     Job job1;
 
 	public static void main(String[] args) {
-		SpringApplication.run(BootBatchBasicApplication.class, args);
+		SpringApplication.run(BootBatchMvcApplication.class, args);
 	}
 	
 	@GetMapping("/")
