@@ -29,7 +29,7 @@ public class BootBatchBasicApplication {
 	            JobParameters jobParameters 
 	            	= new JobParametersBuilder()
 	            		.addLong("time", System.currentTimeMillis())
-	            		.addString("data", "Hoge!")
+	            		.addString("data", "パラメータ追加！")
 	                    .toJobParameters();
 	            jobLauncher.run(job1, jobParameters);
 	 

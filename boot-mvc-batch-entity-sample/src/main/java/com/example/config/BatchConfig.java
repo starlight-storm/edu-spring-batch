@@ -6,6 +6,7 @@ import org.springframework.batch.core.configuration.annotation.EnableBatchProces
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepScope;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
@@ -13,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.example.batch.exception.BatchSkipException;
 import com.example.batch.step.EntryItemProcessor;
 import com.example.batch.step.EntryItemReader;
 import com.example.batch.step.EntryItemWriter;
@@ -30,6 +30,7 @@ public class BatchConfig {
 	@Bean
 	public Job job1() {
 		return jobBuilderFactory.get("job1")
+				.incrementer(new RunIdIncrementer())
 				.flow(step1())
 				.end()
 				.build();
@@ -42,9 +43,6 @@ public class BatchConfig {
 				.reader(reader())
 				.processor(processor())
 				.writer(writer())
-				.faultTolerant()
-				.skipLimit(1)
-				.skip(BatchSkipException.class)
 				.build();
 	}
 	
