@@ -1,5 +1,5 @@
 # 「Spring Batch」演習題材
-・内容：Spring入門者向け。バッチアプリケーションの開発<br>
+・内容：Spring入門者向け。バッチアプリケーション開発の基本から、Spring Boot Batchまで<br>
 ・前提条件：Javaの経験があること。Spring4入門を受講済みであることが好ましい<br>
 ・受講日数：1日<br>
 ・テキスト：PDF（別途送付）<br>
