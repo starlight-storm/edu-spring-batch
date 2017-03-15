@@ -11,18 +11,15 @@ import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
-import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.LineMapper;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.batch.item.validator.SpringValidator;
 import org.springframework.batch.item.validator.ValidatingItemProcessor;
-import org.springframework.batch.item.validator.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import com.example.batch.listener.JobCompletedListener;
@@ -53,36 +50,21 @@ public class BatchConfig {
 	
 	@Bean
 	public Job job1() {
-		return jobBuilderFactory.get("job1")
-				.listener(jobCompletedListener)
-				.flow(step1())
-				.end()
-				.build();
+		// TODO:演習8 必要な記述を加えなさい
+		return null;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Bean
 	public Step step1() {
-		return stepBuilderFactory.get("step1")
-				.<Product, Product>chunk(1)
-				.reader(reader())
-				.processor(processor())
-				.writer(writer())
-				.listener(sampleStepExecutionListener)
-				.faultTolerant()
-				.skipLimit(10)
-				.skip(ValidationException.class)
-				.listener(sampleChunkListener)
-				.build();
+		// TODO:演習8 必要な記述を加えなさい
+		return null;
 	}
 	
 	@Bean
 	public ItemReader<Product> reader() {
-		FlatFileItemReader<Product> reader = new FlatFileItemReader<Product>();
-		reader.setLinesToSkip(1);
-		reader.setResource(new ClassPathResource("/product_csv/1.csv"));
-		reader.setLineMapper(lineMapper());
-		return reader;
+		// TODO:演習8 必要な記述を加えなさい
+		return null;
 	}
 
 	@Bean
