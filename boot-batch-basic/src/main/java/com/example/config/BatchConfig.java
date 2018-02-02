@@ -54,7 +54,6 @@ public class BatchConfig {
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Bean
 	public Step step1() {
 		// TODO:演習8 必要な記述を加えなさい
