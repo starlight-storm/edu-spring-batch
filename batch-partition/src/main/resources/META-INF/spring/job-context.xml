@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:batch="http://www.springframework.org/schema/batch"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<batch:job id="job1">
+		<batch:step id="main">
+			<batch:partition step="step1" partitioner="partitioner">
+				<batch:handler grid-size="4" task-executor="taskExecutor" />
+			</batch:partition>
+		</batch:step>
+	</batch:job>
+
+	<batch:step id="step1">
+		<batch:tasklet>
+			<batch:chunk reader="productItemReader" processor="productItemProcessor"
+				writer="productItemWriter" commit-interval="1" skip-limit="10">
+				<batch:skippable-exception-classes>
+					<!-- ValidationエラーでSKIPさせる -->
+					<batch:include
+						class="org.springframework.batch.item.validator.ValidationException" />
+				</batch:skippable-exception-classes>
+			</batch:chunk>
+		</batch:tasklet>
+		<batch:listeners>
+			<batch:listener ref="sampleChunkListener" />
+			<batch:listener ref="sampleStepExecutionListener" />
+		</batch:listeners>
+	</batch:step>
+ 
+	<bean id="partitioner"
+		class="org.springframework.batch.core.partition.support.MultiResourcePartitioner">
+		<property name="resources" value="classpath:/product_csv/*.csv" />
+	</bean>
+	<bean id="taskExecutor" class="org.springframework.core.task.SimpleAsyncTaskExecutor" />
+
+</beans>
