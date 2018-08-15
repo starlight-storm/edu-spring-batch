@@ -4,10 +4,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>sample</groupId>
-	<artifactId>batch-basic</artifactId>
+	<artifactId>batch-basic-answer</artifactId>
 	<version>1.0.0-RELEASE</version>
 	<packaging>jar</packaging>
-	<name>Batch Basic</name>
+	<name>batch-basic-answer</name>
 	<url>http://www.springframework.org/spring-batch/archetypes/simple-cli-archetype</url>
 	<description>
 		<![CDATA[

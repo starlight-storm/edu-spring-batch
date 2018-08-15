@@ -7,7 +7,7 @@
 	<artifactId>batch-entry</artifactId>
 	<version>1.0.0-RELEASE</version>
 	<packaging>jar</packaging>
-	<name>Batch Entry</name>
+	<name>batch-entry</name>
 	<url>http://www.springframework.org/spring-batch/archetypes/simple-cli-archetype</url>
 	<description>
 		<![CDATA[

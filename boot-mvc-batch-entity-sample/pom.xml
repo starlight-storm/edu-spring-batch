@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>boot-mvc-batch-entry-sample</artifactId>
+	<version>1.0.0-RELEASE</version>
 	<packaging>jar</packaging>
 
-	<name>boot-batch-basic</name>
+	<name>boot-mvc-batch-entry-sample</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>

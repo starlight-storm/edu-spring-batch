@@ -8,7 +8,7 @@ import sample.batch.exception.BatchSkipException;
 @Component("itemReader")
 public class EntryItemReader implements ItemReader<String> {
 
-	private String[] input = {"Hello World", "hoge", "こんにちわ。世界", null};
+	private String[] input = {"Hello World", "こんにちわ。世界", "hoge", "hoge", "こんばんわ。世界", null};
 
 	private int index = 0;
 
