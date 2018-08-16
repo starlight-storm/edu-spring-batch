@@ -17,7 +17,7 @@
 		class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
 		<property name="jobRepository" ref="jobRepository" />
 	</bean>
-	
+
 	<batch:job-repository id="jobRepository"
 		data-source="jobDataSource" transaction-manager="transactionManager" />
 
@@ -38,5 +38,5 @@
 	<jdbc:initialize-database data-source="jobDataSource">
 		<jdbc:script location="${batch.schema.init.script}" />
 	</jdbc:initialize-database>
-	
+
 </beans>

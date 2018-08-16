@@ -29,7 +29,7 @@
 			<batch:listener ref="sampleStepExecutionListener" />
 		</batch:listeners>
 	</batch:step>
- 
+
 	<bean id="partitioner"
 		class="org.springframework.batch.core.partition.support.MultiResourcePartitioner">
 		<property name="resources" value="classpath:/product_csv/*.csv" />

@@ -9,16 +9,16 @@ import org.springframework.stereotype.Component;
 @StepScope
 public class EntryItemReader implements ItemReader<String> {
 
-	private String[] input = {"Hello World", "こんにちわ。世界", null};
+	private String[] input = { "Hello World", "こんにちわ。世界", null };
 	private int index = 0;
 
 	@Value("#{jobParameters['data']}")
 	private String data;
-	
+
 	public String read() throws Exception {
 		String message = input[index++];
 
-		if(message == null) {
+		if (message == null) {
 			return null;
 		}
 		return data + message;

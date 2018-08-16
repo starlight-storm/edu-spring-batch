@@ -27,7 +27,7 @@
 			</bean>
 		</property>
 	</bean>
-	
+
 	<bean id="productItemProcessor"
 		class="org.springframework.batch.item.validator.ValidatingItemProcessor">
 		<property name="validator">

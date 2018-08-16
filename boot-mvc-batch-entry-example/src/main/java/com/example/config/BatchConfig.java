@@ -51,7 +51,7 @@ public class BatchConfig {
 	public ItemReader<String> reader() {
 		return new EntryItemReader();
 	}
-	
+
 	@Bean
 	public ItemProcessor<String, String> processor() {
 		return new EntryItemProcessor();

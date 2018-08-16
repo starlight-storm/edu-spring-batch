@@ -13,7 +13,7 @@ public class SampleStepExecutionListener {
 	public void beforeStep(StepExecution stepExecution) {
 		System.out.println("*** Before Step :Start Time " + stepExecution.getStartTime());
 	}
-	
+
 	@AfterStep
 	public ExitStatus afterStep(StepExecution stepExecution) {
 		System.out.println("*** After Step :Commit Count " + stepExecution.getCommitCount());

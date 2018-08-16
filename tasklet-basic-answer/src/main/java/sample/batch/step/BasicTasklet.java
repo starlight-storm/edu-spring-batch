@@ -21,19 +21,18 @@ public class BasicTasklet implements Tasklet {
 
 	@Autowired
 	private ResourceAwareItemReaderItemStream<Product> productItemReader;
-	
+
 	@Autowired
 	private JdbcBatchItemWriter<Product> productItemWriter;
-	
+
 	public RepeatStatus execute(StepContribution stepContribution, ChunkContext chunkContext) throws Exception {
 		List<Product> productList = new ArrayList<Product>();
 		try {
-			productItemReader.open(chunkContext.getStepContext().getStepExecution()
-                .getExecutionContext());
+			productItemReader.open(chunkContext.getStepContext().getStepExecution().getExecutionContext());
 			Product product;
 			while ((product = productItemReader.read()) != null) {
 				productList.add(product);
-            }
+			}
 			productItemWriter.write(productList);
 		} finally {
 			productItemReader.close();

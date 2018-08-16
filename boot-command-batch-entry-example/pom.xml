@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
-	<artifactId>boot-command-batch-entry-sample</artifactId>
+	<artifactId>boot-command-batch-entry-example</artifactId>
 	<version>1.0.0-RELEASE</version>
 	<packaging>jar</packaging>
 
-	<name>boot-command-batch-entry-sample</name>
+	<name>boot-command-batch-entry-example</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>

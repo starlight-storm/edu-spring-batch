@@ -20,7 +20,7 @@ public class EntryItemReader implements ItemReader<String> {
 		}
 
 		// TODO: 演習2で例外処理を記述する
-		
+
 		return message;
 	}
 }

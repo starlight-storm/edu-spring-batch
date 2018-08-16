@@ -9,7 +9,7 @@
 		scope="step">
 		<!-- TODO: 演習3 プロパティを記述しなさい -->
 	</bean>
-	
+
 	<bean id="productItemProcessor"
 		class="org.springframework.batch.item.validator.ValidatingItemProcessor">
 		<!-- TODO: 演習3 プロパティを記述しなさい -->

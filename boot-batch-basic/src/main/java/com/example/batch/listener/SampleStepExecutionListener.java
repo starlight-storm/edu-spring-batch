@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 public class SampleStepExecutionListener {
 
 	private static final Logger log = LoggerFactory.getLogger(SampleStepExecutionListener.class);
-	
+
 	@BeforeStep
 	public void beforeStep(StepExecution stepExecution) {
 		log.info("*** Before Step :Start Time " + stepExecution.getStartTime());
 	}
-	
+
 	@AfterStep
 	public ExitStatus afterStep(StepExecution stepExecution) {
 		log.info("*** After Step :Commit Count " + stepExecution.getCommitCount());

@@ -29,8 +29,10 @@ public class BootBatchCommandApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws JobExecutionAlreadyRunningException, JobRestartException,
 			JobInstanceAlreadyCompleteException, JobParametersInvalidException {
-		JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())
-				.addString("data", "パラメータ追加！").toJobParameters();
+		JobParameters jobParameters = new JobParametersBuilder()
+				.addLong("time", System.currentTimeMillis())
+				.addString("data", "パラメータ追加！")
+				.toJobParameters();
 		jobLauncher.run(job1, jobParameters);
 	}
 }

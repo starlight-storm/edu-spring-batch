@@ -44,10 +44,10 @@ public class BatchConfig {
 
 	@Autowired
 	SampleStepExecutionListener sampleStepExecutionListener;
-	
+
 	@Autowired
 	SampleChunkListener sampleChunkListener;
-	
+
 	@Bean
 	public Job job1() {
 		// TODO:演習8 必要な記述を加えなさい
@@ -59,7 +59,7 @@ public class BatchConfig {
 		// TODO:演習8 必要な記述を加えなさい
 		return null;
 	}
-	
+
 	@Bean
 	public ItemReader<Product> reader() {
 		// TODO:演習8 必要な記述を加えなさい
@@ -88,7 +88,7 @@ public class BatchConfig {
 		processor.setValidator(springValidator);
 		return processor;
 	}
-	
+
 	@Bean
 	public LocalValidatorFactoryBean validator() {
 		LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();

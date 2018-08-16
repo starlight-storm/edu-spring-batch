@@ -26,7 +26,7 @@ public class BatchConfig {
 
 	@Autowired
 	public StepBuilderFactory stepBuilderFactory;
-	
+
 	@Bean
 	public Job job1() {
 		return jobBuilderFactory.get("job1")
@@ -51,7 +51,7 @@ public class BatchConfig {
 	public ItemReader<String> reader() {
 		return new EntryItemReader();
 	}
-	
+
 	@Bean
 	public ItemProcessor<String, String> processor() {
 		return new EntryItemProcessor();

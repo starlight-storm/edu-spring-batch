@@ -13,26 +13,25 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 public class BootBatchMvcApplication {
-	
-    @Autowired
-    JobLauncher jobLauncher;
- 
-    @Autowired
-    Job job1;
+
+	@Autowired
+	JobLauncher jobLauncher;
+
+	@Autowired
+	Job job1;
 
 	public static void main(String[] args) {
 		SpringApplication.run(BootBatchMvcApplication.class, args);
 	}
-	
+
 	@GetMapping("/")
 	public String batchExecute() throws Exception {
-	            JobParameters jobParameters 
-	            	= new JobParametersBuilder()
-	            		.addLong("time", System.currentTimeMillis())
-	            		.addString("data", "パラメータ追加！")
-	                    .toJobParameters();
-	            jobLauncher.run(job1, jobParameters);
-	 
-	        return "!!! Batch終了 !!!";
-	 }
+		JobParameters jobParameters = new JobParametersBuilder()
+				.addLong("time", System.currentTimeMillis())
+				.addString("data", "パラメータ追加！")
+				.toJobParameters();
+		jobLauncher.run(job1, jobParameters);
+
+		return "!!! Batch終了 !!!";
+	}
 }

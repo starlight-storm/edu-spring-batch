@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
 public class SampleChunkListener {
 
 	private static final Logger log = LoggerFactory.getLogger(JobCompletedListener.class);
-	
+
 	@BeforeChunk
 	public void beforeChunk() {
 		log.info("*** before Chunk");
 	}
-	
+
 	@AfterChunk
 	public void afterChunk() {
 		log.info("*** after Chunk");

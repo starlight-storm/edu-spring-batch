@@ -7,11 +7,11 @@
 	http://www.springframework.org/schema/batch/spring-batch.xsd
 	http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+
 	<batch:job id="job1">
 		<batch:step id="step1">
 			<batch:tasklet ref = "entryTasklet" />
 		</batch:step>
 	</batch:job>
-	
+
 </beans>
