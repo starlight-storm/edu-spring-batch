@@ -26,12 +26,6 @@
 				<maven.test.failure.ignore>false</maven.test.failure.ignore>
 			</properties>
 		</profile>
-		<profile>
-			<id>tiger</id>
-			<activation>
-				<jdk>1.8</jdk>
-			</activation>
-		</profile>
 	</profiles>
 
 	<dependencies>
@@ -136,8 +130,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 
