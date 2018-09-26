@@ -5,5 +5,5 @@
 	http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<!-- TODO: 演習4-5 記述しなさい -->
+	<!-- TODO: 演習5-7 記述しなさい -->
 </beans>
