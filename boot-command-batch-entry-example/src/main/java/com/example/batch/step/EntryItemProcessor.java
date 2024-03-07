@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component;
 
 @Component("itemProcessor")
 public class EntryItemProcessor implements
-		ItemProcessor<String, String> {
+		ItemProcessor<Object, String> {
 
-	public String process(String message)
+	public String process(Object message)
 			throws Exception {
 		return message + "!!";
 	}

@@ -4,9 +4,9 @@ import javax.sql.DataSource;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import com.example.batch.listener.JobCompletedListener;
@@ -31,13 +32,8 @@ import com.example.batch.listener.SampleStepExecutionListener;
 import com.example.business.domain.Product;
 
 @Configuration
-@EnableBatchProcessing
 public class BatchConfig {
-	@Autowired
-	public JobBuilderFactory jobBuilderFactory;
 
-	@Autowired
-	public StepBuilderFactory stepBuilderFactory;
 
 	@Autowired
 	public DataSource dataSource;
@@ -47,24 +43,25 @@ public class BatchConfig {
 
 	@Autowired
 	SampleStepExecutionListener sampleStepExecutionListener;
-	
+
 	@Autowired
 	SampleChunkListener sampleChunkListener;
-	
+
+
+
 	@Bean
-	public Job job1() {
-		return jobBuilderFactory.get("job1")
+	Job job1(JobRepository jobRepository, Step step) {
+		return new JobBuilder("job1", jobRepository)
 				.listener(jobCompletedListener)
-				.flow(step1())
-				.end()
+				.start(step)
 				.build();
 	}
 
-	@SuppressWarnings("unchecked")
+
 	@Bean
-	public Step step1() {
-		return stepBuilderFactory.get("step1")
-				.<Product, Product>chunk(1)
+	Step step1(JobRepository jobRepository, PlatformTransactionManager tm) {
+		return new StepBuilder("step1", jobRepository)
+				.<Product, Product>chunk(1, tm)
 				.reader(reader())
 				.processor(processor())
 				.writer(writer())
@@ -75,7 +72,7 @@ public class BatchConfig {
 				.listener(sampleChunkListener)
 				.build();
 	}
-	
+
 	@Bean
 	public ItemReader<Product> reader() {
 		FlatFileItemReader<Product> reader = new FlatFileItemReader<Product>();
@@ -107,7 +104,7 @@ public class BatchConfig {
 		processor.setValidator(springValidator);
 		return processor;
 	}
-	
+
 	@Bean
 	public LocalValidatorFactoryBean validator() {
 		LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();

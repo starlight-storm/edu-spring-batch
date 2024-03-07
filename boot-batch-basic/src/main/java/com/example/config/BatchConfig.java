@@ -4,9 +4,6 @@ import javax.sql.DataSource;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
@@ -28,13 +25,7 @@ import com.example.batch.listener.SampleStepExecutionListener;
 import com.example.business.domain.Product;
 
 @Configuration
-@EnableBatchProcessing
 public class BatchConfig {
-	@Autowired
-	public JobBuilderFactory jobBuilderFactory;
-
-	@Autowired
-	public StepBuilderFactory stepBuilderFactory;
 
 	@Autowired
 	public DataSource dataSource;

@@ -44,7 +44,7 @@
 		class="org.springframework.batch.item.database.JdbcBatchItemWriter">
 		<property name="dataSource" ref="batchDataSource" />
 		<property name="sql"
-			value="insert into products (code,name,description,price) values(:code,:name,:description,:price)" />
+			value="insert into product (code,name,description,price) values(:code,:name,:description,:price)" />
 		<property name="itemSqlParameterSourceProvider">
 			<bean
 				class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
+import org.springframework.batch.item.Chunk;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.file.ResourceAwareItemReaderItemStream;
 import org.springframework.batch.repeat.RepeatStatus;
@@ -33,7 +34,7 @@ public class BasicTasklet implements Tasklet {
 			while ((product = productItemReader.read()) != null) {
 				productList.add(product);
 			}
-			productItemWriter.write(productList);
+			productItemWriter.write(new Chunk<Product>(productList));
 		} finally {
 			productItemReader.close();
 		}

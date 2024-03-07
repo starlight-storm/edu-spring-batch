@@ -17,7 +17,7 @@
 	-->
 
 	<bean id="jobLauncher"
-		class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+		class="org.springframework.batch.core.launch.support.TaskExecutorJobLauncher">
 		<property name="jobRepository" ref="jobRepository" />
 	</bean>
 	
@@ -26,9 +26,9 @@
 
 	<context:property-placeholder location="classpath:/META-INF/jdbc.properties" />
 
-	<bean id="jobDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<bean id="jobDataSource" class="com.zaxxer.hikari.HikariDataSource">
 		<property name="driverClassName" value="${batch.jdbc.driver}" />
-		<property name="url" value="${batch.jdbc.url}" />
+		<property name="jdbcUrl" value="${batch.jdbc.url}" />
 		<property name="username" value="${batch.jdbc.user}" />
 		<property name="password" value="${batch.jdbc.password}" />
 	</bean>

@@ -45,7 +45,7 @@
 		<property name="dataSource" ref="batchDataSource" />
 		<property name="rowMapper">
 			<bean
-				class="org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper">
+				class="org.springframework.jdbc.core.BeanPropertyRowMapper">
 				<property name="mappedClass" value="sample.business.domain.Member" />
 			</bean>
 		</property>
@@ -53,7 +53,7 @@
 	</bean>
 
 	<bean id="memberItemWriter" class="org.springframework.batch.item.file.FlatFileItemWriter">
-		<property name="resource" value="file:/Users/hase/Document/member.csv" />
+		<property name="resource" value="file:///x:/member.csv" />
 		<!--  <property name="resource" value="file:/Users/hoge/Documents/member.csv" /> -->
 		<property name="shouldDeleteIfExists" value="true"/><!-- true:上書きを許す -->
 		<property name="lineAggregator">

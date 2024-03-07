@@ -15,7 +15,7 @@
 	<import resource="classpath:/META-INF/spring/item-context.xml" />
 
 	<bean id="jobLauncher"
-		class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+		class="org.springframework.batch.core.launch.support.TaskExecutorJobLauncher">
 		<property name="jobRepository" ref="jobRepository" />
 	</bean>
 
@@ -28,9 +28,9 @@
 		<jdbc:script location="${batch.schema.init.script}" />
 	</jdbc:initialize-database>
 
-	<bean id="batchDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<bean id="batchDataSource" class="com.zaxxer.hikari.HikariDataSource">
 		<property name="driverClassName" value="${batch.jdbc.driver}" />
-		<property name="url" value="${batch.jdbc.url}" />
+		<property name="jdbcUrl" value="${batch.jdbc.url}" />
 		<property name="username" value="${batch.jdbc.user}" />
 		<property name="password" value="${batch.jdbc.password}" />
 	</bean>
