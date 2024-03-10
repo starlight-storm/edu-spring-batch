@@ -1,11 +1,11 @@
 ***実行方法***
 [HSQLDBの起動]
 1.HSQLDBを起動する。
-1-1. HSQLDB(1.8.0)をダウンロードする。
+1-1. HSQLDBをダウンロードする。
 1−2. %HSQLDB_HOME%¥libフォルダへ移動。以下のコマンドでHSQLDBをサーバーモードで起動する。
 ・java -cp hsqldb.jar org.hsqldb.Server -database db/test
 1−2. 同様に、libフォルダで以下のコマンドでDatabaseManagerを起動する
-・java -cp hsqldb.jar org.hsqldb.util.DatabaseManager
+・java -cp hsqldb.jar org.hsqldb.util.DatabaseManagerSwing
 ・ダイアログが出てくるのでTypeに「HSQL Database Engine Server」を選択すればOK。
 
 [Eclipseからの動作確認]

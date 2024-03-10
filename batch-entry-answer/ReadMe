@@ -1,8 +1,8 @@
 ***実行方法***
 [HSQLDBの起動]
 1.HSQLDBが起動していない場合、HSQLDBをインメモリで起動する。
-1-1. HSQLDB(1.8.0)をダウンロードし、libフォルダで以下のコマンドをうって起動する(このサンプルではインメモリ)。
-・java -cp hsqldb.jar org.hsqldb.util.DatabaseManager
+1-1. HSQLDBをダウンロードし、libフォルダで以下のコマンドをうって起動する(このサンプルではインメモリ)。
+・java -cp hsqldb.jar org.hsqldb.util.DatabaseManagerSwing
 
 [Eclipseからの動作確認]
 1.batch-entryプロジェクトを選択し、右クリックでRun as > Run Configurations...を選択する。
